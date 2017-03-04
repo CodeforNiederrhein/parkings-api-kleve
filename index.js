@@ -9,6 +9,7 @@ const translations = new Map([
   ['gesamt', 'total'],
   ['aktuell', 'current'],
   ['Offen', 'open'],
+  ['Geschlossen', 'closed'],
   ['Stoerung', 'failure']
 ])
 
