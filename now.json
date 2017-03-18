@@ -1,3 +1,4 @@
 {
-  "name": "parkings-api-kleve"
+  "name": "parkings-api-kleve",
+  "alias": ["parkplatz-kleve-api.daten.cool"]
 }
