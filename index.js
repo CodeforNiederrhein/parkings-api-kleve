@@ -26,6 +26,7 @@ const attribution = {
 }
 
 module.exports = async (req, res) => {
+  res.setHeader('Access-Control-Allow-Origin', '*')
   const response = await fetch('https://www.kleve.de/parkleitsystem/pls.xml')
   const xml = await response.text()
   const json = _.mapKeys(parser.toJson(xml, {object: true}).Daten, getNewKey)
