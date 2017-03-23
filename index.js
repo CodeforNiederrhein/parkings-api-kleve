@@ -2,6 +2,7 @@ const fetch = require('node-fetch')
 const parser = require('xml2json')
 const _ = require('lodash')
 const moment = require('moment')
+const { createError } = require('micro')
 
 const translations = new Map([
   ['zeitstempel', 'timestamp'],
@@ -28,6 +29,9 @@ const attribution = {
 module.exports = async (req, res) => {
   res.setHeader('Access-Control-Allow-Origin', '*')
   const response = await fetch('https://www.kleve.de/parkleitsystem/pls.xml')
+  if (!response.ok) {
+    throw createError(502, 'Data Source Not Available')
+  }
   const xml = await response.text()
   const json = _.mapKeys(parser.toJson(xml, {object: true}).Daten, getNewKey)
   const final = {}
